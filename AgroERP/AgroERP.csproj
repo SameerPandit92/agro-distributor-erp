@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AgroERP.Application\AgroERP.Application.csproj" />
+    <ProjectReference Include="..\AgroERP.Infrastructure\AgroERP.Infrastructure.csproj" />
+    <ProjectReference Include="..\AgroERP.Persistence\AgroERP.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

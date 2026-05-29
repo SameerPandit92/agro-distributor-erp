@@ -19,13 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AgroERP.Shared\AgroERP.Shared.csproj" />
+    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="Configurations\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\AgroERP.Application\AgroERP.Application.csproj" />
+    <ProjectReference Include="..\AgroERP.Domain\AgroERP.Domain.csproj" />
   </ItemGroup>
 
 </Project>
