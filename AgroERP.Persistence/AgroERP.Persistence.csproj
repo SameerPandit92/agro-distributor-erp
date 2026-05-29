@@ -22,4 +22,10 @@
     <ProjectReference Include="..\AgroERP.Shared\AgroERP.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\" />
+    <Folder Include="Configurations\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

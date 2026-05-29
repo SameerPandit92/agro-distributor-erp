@@ -22,4 +22,9 @@
     <ProjectReference Include="..\AgroERP.Application\AgroERP.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
