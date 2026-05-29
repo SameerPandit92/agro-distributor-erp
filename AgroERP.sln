@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP", "AgroERP\AgroERP.csproj", "{7EA095F7-D299-472D-BF70-9EDC90312587}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP.Application", "AgroERP.Application\AgroERP.Application.csproj", "{24745B80-FBC7-4CC1-9BA7-65E97D583543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP.Domain", "AgroERP.Domain\AgroERP.Domain.csproj", "{5A1B107C-3A33-4723-9F6F-8C38284859E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP.Infrastructure", "AgroERP.Infrastructure\AgroERP.Infrastructure.csproj", "{0DF74960-2336-477A-8C11-57E73B51F0EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP.Persistence", "AgroERP.Persistence\AgroERP.Persistence.csproj", "{DF59BB24-CC63-46E9-9D10-3CC3497E8F7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgroERP.Shared", "AgroERP.Shared\AgroERP.Shared.csproj", "{CE19A40B-29E2-4511-9ACA-F4CEE2082173}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EA095F7-D299-472D-BF70-9EDC90312587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA095F7-D299-472D-BF70-9EDC90312587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA095F7-D299-472D-BF70-9EDC90312587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA095F7-D299-472D-BF70-9EDC90312587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24745B80-FBC7-4CC1-9BA7-65E97D583543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24745B80-FBC7-4CC1-9BA7-65E97D583543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24745B80-FBC7-4CC1-9BA7-65E97D583543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24745B80-FBC7-4CC1-9BA7-65E97D583543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1B107C-3A33-4723-9F6F-8C38284859E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1B107C-3A33-4723-9F6F-8C38284859E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1B107C-3A33-4723-9F6F-8C38284859E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1B107C-3A33-4723-9F6F-8C38284859E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF74960-2336-477A-8C11-57E73B51F0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF74960-2336-477A-8C11-57E73B51F0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF74960-2336-477A-8C11-57E73B51F0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF74960-2336-477A-8C11-57E73B51F0EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF59BB24-CC63-46E9-9D10-3CC3497E8F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF59BB24-CC63-46E9-9D10-3CC3497E8F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF59BB24-CC63-46E9-9D10-3CC3497E8F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF59BB24-CC63-46E9-9D10-3CC3497E8F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE19A40B-29E2-4511-9ACA-F4CEE2082173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE19A40B-29E2-4511-9ACA-F4CEE2082173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE19A40B-29E2-4511-9ACA-F4CEE2082173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE19A40B-29E2-4511-9ACA-F4CEE2082173}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EB80967-1FB5-4696-B27E-289BFD8B551F}
+	EndGlobalSection
+EndGlobal
