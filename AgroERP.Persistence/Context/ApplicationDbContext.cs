@@ -15,5 +15,8 @@ namespace AgroERP.Persistence.Context
 
         }
         public DbSet<Retailer> Retailers=> Set<Retailer>();
+        public DbSet<Product> Products => Set<Product>();
+        public DbSet<Sale> Sales => Set<Sale>();
+        public DbSet<PaymentCollection> PaymentCollections => Set<PaymentCollection>();
     }
 }
