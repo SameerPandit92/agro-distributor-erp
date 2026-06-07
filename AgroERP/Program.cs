@@ -24,12 +24,38 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 // Dependency Injection
 builder.Services.AddScoped <IRetailerRepository, RetailerRepository>();
 builder.Services.AddScoped <IRetailerService, RetailerService>();
+
 builder.Services.AddScoped <ISaleRepository,SaleRepository>();
 builder.Services.AddScoped <ISaleService, SaleService>();
+
 builder.Services.AddScoped <IPaymentCollectionRepository, PaymentCollectionRepository>();
 builder.Services.AddScoped <IPaymentCollectionService, PaymentCollectionService>();
 
+builder.Services.AddScoped <ILedgerService,LedgerService>();
+builder.Services.AddScoped<ILedgerRepository,LedgerRepository>();
+
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddScoped<IProductService,ProductService>();
+
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+builder.Services.AddScoped<IReportService, ReportService>();
+
+builder.Services.AddScoped<IStaffRepository,StaffRepository>();
+builder.Services.AddScoped<IStaffService,StaffService>();
+
+builder.Services.AddScoped<IStaffAttendanceRepository,StaffAttendanceRepository>();
+builder.Services.AddScoped<IStaffAttendanceService, StaffAttendanceService>();
+
+builder.Services.AddScoped<IStaffLeaveRepository, StaffLeaveRepository>();
+builder.Services.AddScoped<IStaffLeaveService,StaffLeaveService>();
+
+builder.Services.AddScoped <ISalaryService,SalaryService>();
+
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<IDashboardService,DashboardService>();
+
 var app = builder.Build();
+
 
 // Configure HTTP Pipeline
 if (app.Environment.IsDevelopment())
