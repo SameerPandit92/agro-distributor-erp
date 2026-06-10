@@ -21,5 +21,6 @@ namespace AgroERP.Persistence.Context
         public DbSet<Staff> Staffs => Set<Staff>();
         public DbSet<StaffAttendance> StaffAttendances => Set<StaffAttendance>();
         public DbSet<StaffLeave> StaffLeaves => Set<StaffLeave>();
+        public DbSet<AppUser> AppUsers  => Set<AppUser>();
     }
 }
