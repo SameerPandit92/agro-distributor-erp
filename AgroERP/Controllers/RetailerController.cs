@@ -3,11 +3,13 @@ using AgroERP.Application.Interfaces;
 using AgroERP.Controllers;
 using AgroERP.Domain.Entities;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgroERP.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class RetailerController : ControllerBase

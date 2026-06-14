@@ -8,7 +8,7 @@ namespace AgroERP.Domain.Entities
 {
     public class AppUser
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
@@ -17,8 +17,11 @@ namespace AgroERP.Domain.Entities
         public DateTime DateOfBirth { get; set; }
         public string PhoneNumber { get; set; } = string.Empty;
         public bool AgreeToTerms { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        //public string UserName { get; set; } = string.Empty;
-        //public string Password { get; set; } = string.Empty;
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
+
     }
 }

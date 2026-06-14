@@ -1,4 +1,5 @@
-﻿using AgroERP.Application.DTOs.Product;
+﻿using AgroERP.Application.DTOs.PaginationFilter;
+using AgroERP.Application.DTOs.Product;
 using AgroERP.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace AgroERP.Application.Interfaces
     public interface IProductService
     {
         Task AddAsync(CreateProductDto dto);
-
         Task<List<Product>> GetAllAsync();
+        Task<List<ProductDto>> GetPagedAsync(PaginationFilterDto dto);
     }
 }

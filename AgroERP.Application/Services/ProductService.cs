@@ -1,4 +1,5 @@
-﻿using AgroERP.Application.DTOs.Product;
+﻿using AgroERP.Application.DTOs.PaginationFilter;
+using AgroERP.Application.DTOs.Product;
 using AgroERP.Application.Interfaces;
 using AgroERP.Domain.Entities;
 using System;
@@ -34,6 +35,23 @@ namespace AgroERP.Application.Services
         public async  Task<List<Product>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
+        }
+
+
+        public async Task<List<ProductDto>> GetPagedAsync(PaginationFilterDto dto)
+        {
+            var products = await _repository.GetPagedAsync(dto);
+            return products.Select(x => new ProductDto
+            {
+                Id = x.Id,
+                ProductName = x.ProductName,
+                CompanyName = x.CompanyName,
+                Category = x.Category,
+                Price = x.Price,
+                StockQuantity = x.StockQuantity,
+                CreatedDate = x.CreatedDate
+            })
+            .ToList();
         }
     }
 }

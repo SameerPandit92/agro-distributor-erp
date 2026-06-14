@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AgroERP.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Authorize(Roles = "Admin,Staff")]
     [Route("api/[controller]")]
     [ApiController]

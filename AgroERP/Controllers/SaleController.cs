@@ -1,5 +1,6 @@
 ﻿using AgroERP.Application.DTOs.Sale;
 using AgroERP.Application.Interfaces;
+using AgroERP.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace AgroERP.Controllers
 {
     [Authorize(Roles = "Admin,Staff")]
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class SaleController : ControllerBase
@@ -18,7 +18,7 @@ namespace AgroERP.Controllers
         {
             _saleService = saleService;
         }
-
+        [HasPermission("Sale", "Create")]
         [HttpPost]
         public async Task<IActionResult> AddSale( CreateSaleDto dto)
         {

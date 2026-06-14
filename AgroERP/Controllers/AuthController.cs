@@ -1,7 +1,13 @@
-﻿using AgroERP.Application.DTOs.Auth;
+﻿using AgroERP.Application.DTOs.AssignRoleDto;
+using AgroERP.Application.DTOs.Auth;
 using AgroERP.Application.Interfaces;
+using AgroERP.Authorization;
+using AgroERP.Shared.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+
+
 
 namespace AgroERP.Controllers
 {
@@ -15,20 +21,26 @@ namespace AgroERP.Controllers
         {
             _service =service;
         }
-
+        [EnableRateLimiting("fixed")]
         [HttpPost("login")]
-        public async
-        Task<IActionResult> Login(LoginDto dto)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
-            var token = await _service.LoginAsync(dto);
-            return Ok(new {token});
+            var result = await _service.LoginAsync(dto);
+            return Ok(new ApiResponse<AuthResponseDto>
+            {
+               Success = true,
+               Message = "Login Success",
+               Data = result
+            });
         }
 
         [HttpPost("user registration")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
             var result = await _service.RegisterAsync(dto);
-            return Ok( new{ message = result });
+            //return Ok( new{ message = result });
+            return Ok(new ApiResponse<AuthResponseDto> { Success = true, Message = "User Register Successfully"});
+
         }
 
         [HttpGet("hash")]
@@ -36,6 +48,27 @@ namespace AgroERP.Controllers
         {
             var hashed = BCrypt.Net.BCrypt.HashPassword(password);
             return Ok(hashed);
+        }
+
+        [HttpPost("assign-role")]
+        public async Task<IActionResult> AssignRole( AssignRoleDto dto)
+        {
+            var result = await _service.AssignRoleAsync(dto);
+            return Ok(result);
+        }
+
+        [PermissionAuthorize("Sale","Create")]
+        [HttpPost]
+        public IActionResult AddSale()
+        {
+            return Ok();
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken(RefreshTokenDto dto)
+        {
+            var result = await _service.RefreshTokenAsync(dto);
+            return Ok(result);
         }
     }
 }
