@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AgroERP.Domain\AgroERP.Domain.csproj" />
+    <ProjectReference Include="..\AgroERP.Shared\AgroERP.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

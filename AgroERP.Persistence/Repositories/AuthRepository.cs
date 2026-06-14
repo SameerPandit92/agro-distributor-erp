@@ -97,5 +97,23 @@ namespace AgroERP.Persistence.Repositories
             )
             .AnyAsync();
         }
+
+        
+
+        public async Task<AppUser?> GetByEmailAsync(string email)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(x => x.Email == email);
+        }
+
+        public async Task<AppUser?> GetByResetTokenAsync(string token)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(x => x.PasswordResetToken == token && x.ResetTokenExpires > DateTime.UtcNow);
+        }
+
+        public async Task UpdateAsync(AppUser user)
+        {
+            _context.AppUsers.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using AgroERP.Application.DTOs.Auth;
 using AgroERP.Application.Interfaces;
 using AgroERP.Domain.Entities;
+using AgroERP.Shared.Common;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -222,6 +224,59 @@ namespace AgroERP.Application.Services
                 AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
                 RefreshToken =newRefreshToken
             };
+        }
+
+        public async Task<ApiResponse<string>> ProcessForgetPasswordAsync(ForgetPasswordDto dto)
+        {
+            var user = await _repository.GetByEmailAsync(dto.Email);
+
+            // सुरक्षा के लिए ईमेल न मिलने पर भी सक्सेस जैसा मैसेज ही देंगे
+            if (user == null)
+            {
+                return new ApiResponse<string> { Success = true, Message = "If the email is registered, a secure token has been generated.", Data = "Check email" };
+            }
+
+            // 1. Secure Token जनरेट करें
+            var resetToken = Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
+
+            // 2. यूजर ऑब्जेक्ट अपडेट करें
+            user.PasswordResetToken = resetToken;
+            user.ResetTokenExpires = DateTime.UtcNow.AddHours(1);
+
+            await _repository.UpdateAsync(user);
+
+            return new ApiResponse<string>
+            {
+                Success = true,
+                Message = "Reset token generated successfully.",
+                Data = resetToken // टेस्टिंग के लिए Swagger में देखने हेतु
+            };
+        }
+
+        public async Task<ApiResponse<string>> ProcessResetPasswordAsync(ResetPasswordDto dto)
+        {
+            if (dto.NewPassword != dto.ConfirmNewPassword)
+            {
+                return new ApiResponse<string> { Success = false, Message = "Passwords do not match.", Errors = new List<string> { "Confirm password must match the new password." } };
+            }
+
+            var user = await _repository.GetByResetTokenAsync(dto.Token);
+
+            if (user == null)
+            {
+                return new ApiResponse<string> { Success = false, Message = "Invalid or expired token.", Errors = new List<string> { "The token is invalid or expired." } };
+            }
+
+            // 3. पासवर्ड हैश करें (यहाँ अपनी मौजूदा हैशिंग यूटिलिटी या BCrypt यूज़ करें)
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+
+            user.PasswordHash = hashedPassword;
+            user.PasswordResetToken = null; // टोकन यूज़ होने के बाद क्लियर कर दें
+            user.ResetTokenExpires = null;
+
+            await _repository.UpdateAsync(user);
+
+            return new ApiResponse<string> { Success = true, Message = "Password has been successfully reset!", Data = "Success" };
         }
     }
 }

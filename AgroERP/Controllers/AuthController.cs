@@ -1,6 +1,7 @@
 ﻿using AgroERP.Application.DTOs.AssignRoleDto;
 using AgroERP.Application.DTOs.Auth;
 using AgroERP.Application.Interfaces;
+using AgroERP.Application.Services;
 using AgroERP.Authorization;
 using AgroERP.Shared.Common;
 using Microsoft.AspNetCore.Http;
@@ -69,6 +70,22 @@ namespace AgroERP.Controllers
         {
             var result = await _service.RefreshTokenAsync(dto);
             return Ok(result);
+        }
+
+        [HttpPost("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] ForgetPasswordDto dto)
+        {
+            var response = await _service.ProcessForgetPasswordAsync(dto);
+            return Ok(response);
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+        {
+            var response = await _service.ProcessResetPasswordAsync(dto);
+            if (!response.Success) return BadRequest(response);
+
+            return Ok(response);
         }
     }
 }

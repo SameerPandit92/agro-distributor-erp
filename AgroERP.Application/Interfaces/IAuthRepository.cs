@@ -16,5 +16,9 @@ namespace AgroERP.Application.Interfaces
         Task UpdateUserAsync( AppUser user);
         Task<AppUser?> GetByRefreshTokenAsync(string refreshToken);
         Task<bool> HasPermissionAsync( Guid userId,string module, string permission);
+
+        Task<AppUser?> GetByEmailAsync(string email);
+        Task<AppUser?> GetByResetTokenAsync(string token);
+        Task UpdateAsync(AppUser user);
     }
 }

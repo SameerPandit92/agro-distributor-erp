@@ -1,5 +1,6 @@
 ﻿using AgroERP.Application.DTOs.AssignRoleDto;
 using AgroERP.Application.DTOs.Auth;
+using AgroERP.Shared.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace AgroERP.Application.Interfaces
         Task<string> RegisterAsync(RegisterDto dto);
         Task<string> AssignRoleAsync(AssignRoleDto dto);
         Task<AuthResponseDto> RefreshTokenAsync(RefreshTokenDto dto);
+        Task<ApiResponse<string>> ProcessForgetPasswordAsync(ForgetPasswordDto dto);
+        Task<ApiResponse<string>> ProcessResetPasswordAsync(ResetPasswordDto dto);
     }
 }
