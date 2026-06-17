@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  agro-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong@Password123
+    ports:
+      - "1433:1433"
+
+  agro-api:
+    image: agroerp-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=agro-db;Database=AgroERP_DB;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;
+    depends_on:
+      - agro-db
