@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/docker-compose.yml
+/AgroERP/Program.cs
+/docker-compose.yml
